@@ -47,29 +47,39 @@ public class SinglyLinkedQueue<E> implements Queue<E> {
 	public SinglyLinkedQueue() {
 		currentSize = 0;
 		header = new Node();
-		trailer = new Node(null, header);
+		trailer = new Node();
 	}
 	@Override
 	public void enqueue(E e) {
-		// TODO Auto-generated method stub
-		Node newNode = new Node(null, null);
+		Node newNode = new Node(e, null);
+		
 		if (e == null)
 			throw new IllegalArgumentException("Parameter cannot be null");
 		/* Elements are added at the rear of the queue */
 		if(this.size() == 0) {
-			header.setValue(e);
+			this.header = newNode;
+			this.trailer = this.header;
+			this.currentSize++;
 		}
-		else {
-			newNode.setValue(e);
-			newNode.setNext(header);
+		else if(this.size() >= 1) {
+			this.trailer.setNext(newNode);
+			this.trailer = newNode;
+			this.currentSize++;
 		}
 		
 	}
 
 	@Override
 	public E dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		/* Elements are removed from the front of the queue */
+		if(this.isEmpty())
+			return null;
+		Node rmNode = header;
+		E result = rmNode.getValue();
+		this.header = rmNode.getNext();
+		rmNode.clear();
+		this.currentSize--;
+		return result;
 	}
 
 	@Override
@@ -86,8 +96,8 @@ public class SinglyLinkedQueue<E> implements Queue<E> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-
+		while (!isEmpty())
+			dequeue();
 	}
 
 	@Override
@@ -95,10 +105,16 @@ public class SinglyLinkedQueue<E> implements Queue<E> {
 		return this.currentSize;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public E[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		E[] theArray = (E[]) new Object[this.size()];
+		int i = 0;
+		for(Node curNode = header; curNode != null; curNode = curNode.getNext()) {
+			theArray[i++] = curNode.getValue();
+		}
+		return theArray;
+		
 	}
 
 }
