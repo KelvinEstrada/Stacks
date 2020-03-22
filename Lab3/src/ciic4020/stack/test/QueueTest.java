@@ -10,33 +10,33 @@ import ciic4020.queue.SinglyLinkedQueueFactory;
 public class QueueTest {
 
 	public static void main(String[] args) {
-//		QueueFactory<String> factory = new SinglyLinkedQueueFactory<String>();
-//		Queue<String> queue = factory.newInstance();
-//		
-//		queue.enqueue("Kelvin");
-//		queue.enqueue("Jose");
-//		queue.enqueue("Juan");
-//		queue.enqueue("Ned");
-//		System.out.println("------------");
-//		System.out.println("Queue size is " + queue.size());
-//		System.out.println("------------");
-//		printQueue(queue);
-//		System.out.println("------------");
-//		System.out.println("Dequeuing " + queue.dequeue());
-//		System.out.println("Dequeuing " + queue.dequeue());
-//		System.out.println("Dequeuing " + queue.dequeue());
-//		System.out.println("Dequeuing " + queue.dequeue());
-//		System.out.println("------------");
-//		queue.enqueue("Alexander");
-//		queue.enqueue("Alexander");
-//		queue.enqueue("Alexander");
-//		printQueue(queue);
-//		System.out.println("------------");
-//		System.out.println("Queue size is " + queue.size());
-//		System.out.println("Clearing queue...");
-//		queue.clear();
-//		printQueue(queue);
+		QueueFactory<String> factory = new SinglyLinkedQueueFactory<String>();
+		Queue<String> queue = factory.newInstance();
 		
+		queue.enqueue("Kelvin");
+		queue.enqueue("Jose");
+		queue.enqueue("Juan");
+		queue.enqueue("Ned");
+		System.out.println("------------");
+		System.out.println("Queue size is " + queue.size());
+		System.out.println("------------");
+		printQueue(queue);
+		System.out.println("------------");
+		System.out.println("Dequeuing " + queue.dequeue());
+		System.out.println("Dequeuing " + queue.dequeue());
+		System.out.println("Dequeuing " + queue.dequeue());
+		System.out.println("Dequeuing " + queue.dequeue());
+		System.out.println("------------");
+		queue.enqueue("Alexander");
+		queue.enqueue("Alexander");
+		queue.enqueue("Alexander");
+		printQueue(queue);
+		System.out.println("------------");
+		System.out.println("Queue size is " + queue.size());
+		System.out.println("Clearing queue...");
+		queue.clear();
+		printQueue(queue);
+		System.out.println("-------Testing Deque-------");
 		DequeFactory<String> factory1 = new CircularDoublyLinkedDequeFactory<String>();
 		Deque<String> deque = factory1.newInstance();
 		
@@ -57,7 +57,7 @@ public class QueueTest {
 		System.out.println("Removing first element: " + deque.removeFirst());
 		System.out.println("Removing first element: " + deque.removeFirst());
 		System.out.println("Removing first element: " + deque.removeFirst());
-		System.out.println("Removing first element: " + deque.removeFirst());
+		System.out.println("Removing last element: " + deque.removeLast());
 		deque.addFirst("Jil");
 		deque.addFirst("Ned");
 		deque.addFirst("Juan");
@@ -65,7 +65,9 @@ public class QueueTest {
 		printDeque(deque);
 		System.out.println("---------------------------------------");
 		deque.clear();
+		System.out.println("Clearing deeque...");
 		printDeque(deque);
+		System.out.println("Done!");
 		
 	}
 	
