@@ -105,7 +105,7 @@ public class CircularDoublyLinkedDeque<E> implements Deque<E>{
 			currentSize++;
 		}
 		else {
-			/*	Insert new node at the front (in this case the trailer of the queue)
+			/*	Insert new node at the front (in this case the trailer of the queue is used as the front of the queue.)
 			 * 
 			 */
 			Node newNode = new Node(element, null, null);
